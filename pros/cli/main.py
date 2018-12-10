@@ -43,7 +43,7 @@ def main():
         formatter = pros.common.ui.log.PROSLogFormatter('%(levelname)s - %(name)s:%(funcName)s - %(message)s', ctx_obj)
         click_handler.setFormatter(formatter)
         logging.basicConfig(level=logging.WARNING, handlers=[click_handler])
-        cli.main(prog_name='pros', obj=ctx_obj)
+        return cli.main(prog_name='pros', obj=ctx_obj)
     except KeyboardInterrupt:
         click.echo('Aborted!')
     except Exception as e:
@@ -72,4 +72,4 @@ def cli():
 
 
 if __name__ == '__main__':
-    main()
+    sys.exit(main())
