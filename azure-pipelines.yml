@@ -40,7 +40,7 @@ jobs:
       displayName: Build
     - task: PublishPipelineArtifact@0
       inputs:
-        artifactName: 'pros_cli-$(Build.BuildNumber)-win-$(buildArch)'
+        artifactName: 'pros-cli-win-$(buildArch)'
         targetPath: 'out'
 
 - job: Linux
@@ -72,7 +72,7 @@ jobs:
       displayName: Build
     - task: PublishPipelineArtifact@0
       inputs:
-        artifactName: 'pros_cli-$(Build.BuildNumber)-linux-$(buildArch)'
+        artifactName: 'pros-cli-linux-$(buildArch)'
         targetPath: 'out'
 
 - job: PublishArtifact
@@ -84,7 +84,7 @@ jobs:
     - checkout: none
     - task: DownloadPipelineArtifact@0
       inputs:
-        artifactName: 'pros_cli-$(Build.BuildNumber)-linux-x64'
+        artifactName: 'pros-cli-linux-x64'
         targetPath: $(System.DefaultWorkingDirectory)
     - script: 'sudo pip install twine'
     - task: TwineAuthenticate@0
